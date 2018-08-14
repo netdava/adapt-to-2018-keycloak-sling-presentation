@@ -2,7 +2,7 @@
 
 Presentation slides for Keycloak and Sling integration for Adapt.to 2018
 
-- For the actual slides use https://netdava.github.io/adapt-to-2018-keycloak-sling-presentation/presentation .
+- For the actual slides use [presentation link](https://netdava.github.io/adapt-to-2018-keycloak-sling-presentation/presentation) .
 
 ## Local development
 
@@ -23,5 +23,5 @@ Install the tooling with `npm install`.
 
 Once that is done, you can create new reveal presentations with `npx`: `npx reveal new presentation-name` .
 
-https://www.npmjs.com/package/reveal-cli
+[reveal-cli homepage](https://www.npmjs.com/package/reveal-cli)
 
