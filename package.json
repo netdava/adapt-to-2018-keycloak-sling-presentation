@@ -1,0 +1,22 @@
+{
+  "name": "adapt-to-2018-keycloak-sling-presentation",
+  "version": "1.0.0",
+  "description": "Presentation slides for Keycloak and Sling integration for Adapt.to 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netdava/adapt-to-2018-keycloak-sling-presentation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netdava/adapt-to-2018-keycloak-sling-presentation/issues"
+  },
+  "homepage": "https://github.com/netdava/adapt-to-2018-keycloak-sling-presentation#readme",
+  "dependencies": {
+    "reveal-cli": "^2.0.1"
+  }
+}
