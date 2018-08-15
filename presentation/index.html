@@ -1,68 +1,268 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/adapt-to.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/adapt-to.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown>
-					<textarea data-template>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.type = "text/css";
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			"css/print/pdf.css" :
+			"css/print/paper.css";
+		document.getElementsByTagName("head")[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section data-markdown>
+				<textarea data-template>
+						![adapt-to logo](adapt-to.svg) <!-- .element: style="width: 10%" -->
 						### Modern authentication in Sling with OpenID Connect and Keycloak
 
-						Dmitry Telegin -
+						Dmitry Telegin
 
-						Eugen Stan - Netdava International
+						Eugen Stan - netdava.com
 					</textarea>
+			</section>
+
+			<!-- Introduction -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Why should you listen
+
+											![In god we trust, all others we authenticate.](in-god-we-authenticate.jpg) <!-- .element: style="width: 50%"-->
+
+											Some people don't trust gods either :).
+
+											( source: https://baeldung.com )
+										</textarea>
+				</section>
+			</section>
+
+			<!-- Authorization -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Options for authorization
+
+											* Oak side: JCR ACLs
+											* OSGi side: OSGi HttpService servlet filter
+											* Sling side: Resource access security
+											* Keycloak: keycloak authorization services
+										</textarea>
+				</section>
+			</section>
+
+			<!-- Access control in Oak -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Access control in Oak (JCR ACL's)
+
+											* Paradigm: declarative
+											* Character: repository-centric
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### Access control in Oak - Benefits
+
+											* well-known to Sling developers ?!
+											* requires no coding
+											* “live” inside the repository (can be migrated, backed up & restored with the repo)
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### Access control in Oak - Drawbacks
+
+											* need user provisioning
+											* have limitations inherent to ACL systems
+											* need to design content around ACL
+										</textarea>
+				</section>
+			</section>
+
+			<!-- Access control in sling -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Sling
+
+							* Paradigm: imperative
+							* Character: application-centric
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Sling - Benefits
+
+							* can implement any policy you like
+							* also “live” inside the repo
+							* no user provisioning required
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Sling - Drawbacks
+
+							* requires coding
+							* you reinvent the wheel
+						</textarea>
+				</section>
+			</section>
+
+			<!-- Access control in Keycloak -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Keycloak
+
+							* Paradigm: declarative + imperative
+							* Character: identity-centric
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Keycloak - Benefits
+
+							* an extensive set of built-in policies:
+							 	* RBAC, ABAC, time-based etc.
+							* create completely bespoke policies (may require coding)
+							* in all other cases, no coding required
+							* no user provisioning required
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Access control in Keycloak - Drawbacks
+
+							* unfamiliar for most Sling developers
+							* policies “live” inside Keycloak -> another system to manage
+						</textarea>
+				</section>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+						### Live demo
+
+						* Sling Fling app w/ Keycloak
+						* Nginx website
+						* SSO between apps
+						* Social login with Facebook
+						* RBAC, time based login and other policies
+					</textarea>
+			</section>
+
+			<!-- OUTRO -->
+
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+							### Future directions
+
+							* use OSGi Config Admin Service for adapter configuration
+							* Sling based login pages
+							* SCIM support in both Sling and Keycloak
+
+						</textarea>
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+							### About us
+
+							* it's the first time we worked together
+							* we met on the Sling mailing list
+							* we decided to keep the presentation together
+							* common interests: Sling and Keycloak
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### About us - Dmitry Telegin
+
+							* from Russia with love
+						</textarea>
 				</section>
 
+				<section data-markdown>
+					<textarea data-template>
+							### About us - Eugen Stan
 
-				<section>
-
-					Slide 2
-					<img data-src="adapt-to.svg">
-
+							* passionate about business and technology
+							* I like to build systems - especially SaaS
+							* Open source contributor: Apache Software Foundation, Debian, etc
+							* https://netdava.com/ieugen
+						</textarea>
 				</section>
+			</section>
 
+			<section data-markdown>
+				<textarea data-template>
+						# Q & A
 
+						* Demo: https://adapt-to-demo.netdava.com/
 
+					</textarea>
+			</section>
 
-			</div>
+			<section data-markdown>
+				<textarea data-template>
+						# Thank you !
+
+					</textarea>
+			</section>
+
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: "plugin/markdown/marked.js"
+				},
+				{
+					src: "plugin/markdown/markdown.js"
+				},
+				{
+					src: "plugin/notes/notes.js",
+					async: true
+				},
+				{
+					src: "plugin/highlight/highlight.js",
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
 </html>
