@@ -55,6 +55,375 @@
 				</section>
 			</section>
 
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Authentication goals
+
+											 Keep user data secured.
+
+											 Be simple to use.
+
+											 Challanges we face: both business and technical.
+
+										</textarea>
+				</section>
+			</section>
+
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Business challanges
+
+											Derived from legislation:
+
+											* ISO/IEC 27000 - family of *Information Security Management Systems* standards
+											* General Data Protection Regulation - more requirements regarding user data management
+
+											Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Business challanges
+
+											Developer friendly information:
+
+											* ENISA Guidelines for SMEs on the security of personal data processing
+											* https://techblog.bozho.net/gdpr-practical-guide-developers/
+
+											Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### What is ISO/IEC 27000?
+
+											* a set of documents that describe security practices
+											* they are general and target companies
+											* there is a certification process
+											* deals with both technical and organisational issues
+
+											 Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### What is GDPR?
+
+											* EU regulation that entered into force in may 2018
+											* establishes a set of rules for companies
+											* focuses on user data protection
+											* has a high impact on business processes
+
+											 Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Business challanges
+
+											 Derived from ISO/IEC 27 000 and GDPR:
+
+											 * Forget me - functionality
+											 * Allow users to edit their profile - OOTB with Keyclaok
+											 * Consent check boxes - login policy !?
+											 * Re-request consent - login policy !?
+
+											 Note:
+
+											 Forget me - Keycloak keeps most personal identifiable data in a single place
+											 Consent check boxes and Re-request consetn - you can implement a Keycloak login policy
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Business challanges
+
+											 Derived from ISO/IEC 27 000 and GDPR requirements:
+
+											 * Implement pseudo-nimisation - usernames and user id's
+											 * Log access to personal data - Keycloak login audit
+											 * Register API consumers - Keycloak has support for UMA
+
+											 Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Business challanges
+
+											 * Access control policy
+											 * Access control and authentication
+											 * Logging and monitoring
+
+											 Note:
+											 From ENISA Handbook
+
+										</textarea>
+				</section>
+			</section>
+
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Technical challanges
+
+											* Brute-force protection
+											* Password policies (quality, dictionary checks)
+											* Captcha support
+											* Email verification
+											* Reset credentials
+											* Terms and Conditions (hello GDPR)
+
+											Note:
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Technical challanges (2)
+
+											* Brokering to social networks
+											* Brokering to another IAMs (e.g. Okta)
+											* Identity Federation (e.g. multiple LDAPs)
+											* Multi-factor authentication (e.g. smart cards for government)
+											* Single sign-on
+
+											Note:
+
+										</textarea>
+				</section>
+
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+											### Current state of play in Sling
+
+											* Sling supports simple login / password auth
+											* Has support for LDAP integration (via Oak)
+
+											* Most/All challanges are not covered out of the box in Sling.
+											* Why re-invent the wheel
+
+											Note:
+
+										</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+										### Alternative: use an external IAM
+
+										Delegate authentication to external service -> Identity Access Management.
+
+										This is what we are going to show you today.
+
+										</textarea>
+			</section>
+
+			<!-- Authorization -->
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+											### Authentication: How it works?
+
+											For *eggheads*:
+
+											* Nice picture / UML diagram of process ! BAM !
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Authentication: How it works?
+
+											For non-eggheads:
+											* Short live demo of Sling + Keycloak in action.
+
+											* https://adapt-to-demo.netdava.com/
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Auth protocols (SSO)
+
+											There are three popular SSO protocols:
+
+											* OpenID Connect
+											* SAML
+											* CAS
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Auth SSO implementations
+
+											* There are a number of implementations:
+											  - open and closed source ones
+											  - cloud and on-premise versions
+											* Keycloak
+											* PingIdentity
+											* Auth0
+											* WSO2
+											* Okta
+											* Azure Directory Services family of products
+
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### Why Keycloak?
+
+											* It solves all the challenges from the slides :D ;
+											* it is F/LOSS;
+											* it’s mature and is backed by Red Hat and comunity.
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### I want it now! What do I need to do?
+
+										* have Keycloak up and running (beyond the scope of the talk);
+										* configure client in Keycloak (ditto);
+										* install Keycloak servlet filter adapter into Sling;
+										* activate and configure the adapter (via bundle activator or by extending the class);
+										* install Keycloak AuthenticationHandler;
+										* (optional) install Oak JAAS module;
+										* (optional) setup user provisioning.
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### Can I hack on it?
+
+										(Tell about GitHub repos and Docker images; propose improvised hands-on if there is interest)
+
+										* https://github.com/keycloak/keycloak/
+										* https://github.com/netdava/sling-org-apache-sling-karaf-features
+										*
+
+										</textarea>
+				</section>
+
+			</section>
+
+
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+										### Identity provisioning
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### User provisioning? What is it?
+
+										We have yet two participating entities: IAM and JCR
+										* they should have unified, coherent view on the identity data.
+										* list of the users in Oak needs to be kept in sync with Keycloak.
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### Do I really need it?
+
+										**YES** if
+										* You’re relying on the users’ existence in the underlying JCR.
+										* If you make heavy use of JCR ACLs.
+
+										**NO** if you follow a JavaEE-like paradigm:
+										* You connect the underlying DB using a service account
+										* Access control is on the application level
+										* You’re OK to go with a single account for JCR
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### How is it done?
+
+										* push provisioning (Keycloak pushes to Sling);
+										* pull provisioning (aka periodic sync; Sling pulls from Keycloak);
+										* shared user store (both use the same user database).
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### Push provisioning
+
+										Can be implemented as a Keycloak extension listening for events and propagating changes to Sling/Oak via REST API.
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### Pull provisioning
+
+										Can be done with a periodic task in Sling polling Keycloak for changes and synchronizing via Keycloak REST API.
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### Why don’t we have it now?
+
+										We did not need it for our use-cases.
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### SCIM to the rescue (future)
+
+										* SCIM is an open standard for identity data exchange.
+										* Both push and pull provisioning in a vendor-neutral way.
+										* Neither Sling nor Keycloak support SCIM out of the box :(
+										* Maybe for adaptTo’2019?
+
+										</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+										### LDAP to the rescue (present)
+
+										* The easiest way to provide a unified user store is LDAP directory.
+										* It is supported OOTB by both Sling/Oak and Keycloak.
+
+										</textarea>
+				</section>
+
+			</section>
+
 			<!-- Authorization -->
 			<section>
 				<section data-markdown>
