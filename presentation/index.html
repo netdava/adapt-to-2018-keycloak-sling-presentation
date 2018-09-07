@@ -177,63 +177,41 @@
 			</section>
 
 			<section>
+				<section>
+					<h3 style="background: #42affa; width: 100%">Technical challenges</h3>
+				</section>
 				<section data-markdown>
 					<textarea data-template>
 											### Technical challenges
-
-											* Brute-force protection
-											* Password policies (quality, dictionary checks)
-											* Captcha support
-											* Email verification
-											* Reset credentials
-											* Terms and Conditions (hello GDPR)
-
-											Note:
-
-										</textarea>
+											![cloud of challenges](auth-cloud.svg)
+											<!-- .element: style="width: 100%; border: 0; background: none; box-shadow: none"-->
+					</textarea>
 				</section>
-
 				<section data-markdown>
 					<textarea data-template>
-											### Technical challenges (2)
-
-											* Brokering to social networks
-											* Brokering to another IAMs (e.g. Okta)
-											* Identity Federation (e.g. multiple LDAPs)
-											* Multi-factor authentication (e.g. smart cards for government)
-											* Single sign-on
-
+											### Technical challenges - Sling
+											![cloud of challenges](auth-cloud-sling.svg)
+											<!-- .element: style="width: 100%; border: 0; background: none; box-shadow: none"-->
 											Note:
-
-										</textarea>
-				</section>
-
-			</section>
-
-			<section data-markdown>
-				<textarea data-template>
-											### Current state of play in Sling
-
 											* Sling supports simple login / password auth
 											* Has support for LDAP integration (via Oak)
 
 											* Most/All challenges are not covered out of the box in Sling.
 											* Why re-invent the wheel
+											
+					</textarea>
+				</section>
 
-											Note:
-
-										</textarea>
 			</section>
 
 			<section data-markdown>
 				<textarea data-template>
-										### Alternative: use an external IAM
-
+										### Alternative:
+										### Use an external IAM
+										Note:
 										Delegate authentication to external service -> Identity Access Management.
-
 										This is what we are going to show you today.
-
-										</textarea>
+				</textarea>
 			</section>
 
 			<!-- Authorization -->
