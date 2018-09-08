@@ -12,7 +12,26 @@
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
+	
+	<style type="text/css">
+		#guy {
+		  left:-8.33%;
+		  text-align: left;
+		  float: left;
+		  width:25%;
+		  z-index:-10;
+		}
 
+		#right {
+		  left:31.25%;
+		  top: 75px;
+		  float: right;
+		  text-align: right;
+		  z-index:-10;
+		  width:70%;
+		}
+	</style>
+	
 	<!-- Printing and PDF exports -->
 	<script>
 		var link = document.createElement("link");
@@ -32,7 +51,10 @@
 			<section data-markdown>
 				<textarea data-template>
 						![adapt-to logo](adapt-to.svg) <!-- .element: style="width: 10%" -->
-						### Modern authentication in Sling with OpenID Connect and Keycloak
+						### Modern authentication in Sling
+						<!-- .element: style="background: #42affa; width: 100%" -->
+						#### with OpenID Connect and Keycloak
+						<!-- .element: style="background: #42affa; width: 100%" -->
 
 						Dmitry Telegin - acutus.pro
 
@@ -177,105 +199,150 @@
 			</section>
 
 			<section>
+			
 				<section>
 					<h3 style="background: #42affa; width: 100%">Technical challenges</h3>
 				</section>
-				<section data-markdown>
+				
+				<section data-markdown data-transition="fade">
 					<textarea data-template>
 											### Technical challenges
 											![cloud of challenges](auth-cloud.svg)
 											<!-- .element: style="width: 100%; border: 0; background: none; box-shadow: none"-->
 					</textarea>
 				</section>
-				<section data-markdown>
+				
+				<section data-markdown data-transition="fade">
 					<textarea data-template>
-											### Technical challenges - Sling
+											### Sling
 											![cloud of challenges](auth-cloud-sling.svg)
 											<!-- .element: style="width: 100%; border: 0; background: none; box-shadow: none"-->
 											Note:
 											* Sling supports simple login / password auth
 											* Has support for LDAP integration (via Oak)
-
 											* Most/All challenges are not covered out of the box in Sling.
 											* Why re-invent the wheel
-											
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+											### Alternative:
+											### Use an external IAM
+											Note:
+											Delegate authentication to external service -> Identity Access Management.
+											This is what we are going to show you today.
 					</textarea>
 				</section>
 
 			</section>
 
-			<section data-markdown>
-				<textarea data-template>
-										### Alternative:
-										### Use an external IAM
-										Note:
-										Delegate authentication to external service -> Identity Access Management.
-										This is what we are going to show you today.
-				</textarea>
-			</section>
-
-			<!-- Authorization -->
+			<!-- Authentication -->
 			<section>
+
+				<section>
+					<h3 style="background: #42affa; width: 100%">Authentication</h3>
+				</section>
+			
 				<section data-markdown>
 					<textarea data-template>
-											### Authentication: How it works?
-
-											For *eggheads*:
-
-											* Nice picture / UML diagram of process ! BAM !
-
-										</textarea>
+											#### Authentication with IAM: How it works?
+											![IAM sequence diagram](iam.svg)
+											<!-- .element: style="width: 75%; border: 0; background: none; box-shadow: none"-->											
+					</textarea>
+				</section>
+				
+				<section>
+					<h3 style="background: #42affa; width: 100%">Live Demo</h3>
+					https://adapt-to-demo.netdava.com/
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-											### Authentication: How it works?
-
-											For non-eggheads:
-											* Short live demo of Sling + Keycloak in action.
-
-											* https://adapt-to-demo.netdava.com/
-
-										</textarea>
+				<section>
+					<h3>What was that?</h3>
+					<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/keycloak.png">
+					&nbsp;+&nbsp;
+					<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/oidc.png">
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-											### Auth protocols (SSO)
-
-											There are three popular SSO protocols:
-
-											* OpenID Connect
-											* SAML
-											* CAS
-
-										</textarea>
+				<section>
+				    <h3>IAM Solutions</h3>
+					<img style="padding: 1em" src="img/iam-montage.png">
+					<aside class="notes">
+						* There are a number of implementations:
+						  - open and closed source ones
+						  - cloud and on-premise versions
+						* Keycloak
+						* PingIdentity
+						* Auth0
+						* WSO2
+						* Okta
+						* Azure Directory Services family of products
+					</aside>
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-											### Auth SSO implementations
-
-											* There are a number of implementations:
-											  - open and closed source ones
-											  - cloud and on-premise versions
-											* Keycloak
-											* PingIdentity
-											* Auth0
-											* WSO2
-											* Okta
-											* Azure Directory Services family of products
-
-										</textarea>
+				<section>
+				    <h3>Why Keycloak?</h3>
+						<img class="fragment fade-in" style="width: 100%; border: 0; background: none; box-shadow: none" src="auth-cloud.svg">
+						<span class="fragment fade-in">...and it's free</span>
+						&nbsp;
+						<img class="fragment fade-in" style="vertical-align: bottom; margin: 0; height: 1.5em; border: 0; background: none; box-shadow: none" src="img/redhat.svg">
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-											### Why Keycloak?
+				
+				<section>
+				    <h3>SSO Protocols</h3>
+						<img style="height: 3em" src="img/oidc.jpg">
+						&nbsp;
+						<img style="height: 3em" src="img/saml.png">
+						&nbsp;
+						<img style="height: 3em; background: white" src="img/cas.png">
+				</section>
 
-											* It solves all the challenges from the slides :D ;
-											* it is F/LOSS;
-											* it’s mature and is backed by Red Hat and comunity.
-										</textarea>
+				<section>
+				    <h3>SSO Protocols</h3>
+						<img style="width: 75%" src="img/sso.png">
+				</section>
+
+				<section>
+				    <h3>SSO Protocols: SAML</h3>
+						<img id="guy" style="border: 0; background: none; box-shadow: none" src="img/saml-guy.png">
+						<div id="right">
+							<ul>
+								<li>Born in the era of XML WS</li>
+								<li>Still very popular in the enterprise</li>
+								<li>Mature and feature-rich</li>
+								<li>XML-based</li>
+								<li>Very verbose</li>
+								<li>No backchannel required</li>
+								<li>Perfect for monolithic webapps</li>
+							</ul>
+						</p>
+				</section>
+
+				<section>
+				    <h3>SSO Protocols: OpenID Connect</h3>
+						<img id="guy" style="border: 0; background: none; box-shadow: none" src="img/oidc-guy.png">
+						<div id="right">
+							<ul>
+								<li>First-class web citizen</li>
+								<li>JSON-based</li>
+								<li>Lightweight</li>
+								<li>Optional backchannel</li>
+								<li>Perfect for all kinds of apps</li>
+							</ul>
+						</p>
+				</section>
+
+				<section>
+				    <h3>SSO Protocols: CAS</h3>
+						<img id="guy" style="border: 0; background: none; box-shadow: none" src="img/cas-guy.png">
+						<div id="right">
+							<ul>
+								<li>Implemented by Apereo CAS</li>
+								<li>JSON- or XML-based</li>
+								<li>Backchannel required</li>
+								<li>Suitable for all kinds of apps</li>
+							</ul>
+						</p>
 				</section>
 
 				<section data-markdown>
