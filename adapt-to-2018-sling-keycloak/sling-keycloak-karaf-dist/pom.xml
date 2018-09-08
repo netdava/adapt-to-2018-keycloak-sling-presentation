@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.netdava.demo</groupId>
+    <artifactId>adapt-to-2018-sling-keycloak</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>keycloak-sling-karaf-dist</artifactId>
+  <packaging>karaf-assembly</packaging>
+  <name>Apache Sling integration with Keycloak IDM over Apache Karaf</name>
+
+  <dependencies>
+    <dependency>
+      <!-- scope is compile so all features (there is only one) are installed into startup.properties and the feature repo itself is not added in etc/org.apache.karaf.features.cfg file -->
+      <groupId>org.apache.karaf.features</groupId>
+      <artifactId>framework</artifactId>
+      <version>${karaf.version}</version>
+      <type>kar</type>
+    </dependency>
+    <dependency>
+      <!-- scope is runtime so the feature repo is listed in etc/org.apache.karaf.features.cfg file, and features will installed into the system directory -->
+      <groupId>org.apache.karaf.features</groupId>
+      <artifactId>standard</artifactId>
+      <classifier>features</classifier>
+      <version>${karaf.version}</version>
+      <type>xml</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.sling</groupId>
+      <artifactId>org.apache.sling.karaf-features</artifactId>
+      <version>${sling-features.version}</version>
+      <classifier>features</classifier>
+      <type>xml</type>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- if you want to include resources in the distribution -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/filtered-resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <!-- karaf-maven-plugin will call both assembly and archive goals -->
+      <plugin>
+        <groupId>org.apache.karaf.tooling</groupId>
+        <artifactId>karaf-maven-plugin</artifactId>
+        <version>${karaf.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <!-- no startupFeatures -->
+          <bootFeatures>
+            <feature>standard</feature>
+          </bootFeatures>
+          <!-- no installedFeatures -->
+          <installedFeatures>
+            <installedFeature>sling-quickstart-oak-tar</installedFeature>
+            <installedFeature>sling-discovery-oak</installedFeature>
+            <installedFeature>sling-content-starter</installedFeature>
+          </installedFeatures>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+
