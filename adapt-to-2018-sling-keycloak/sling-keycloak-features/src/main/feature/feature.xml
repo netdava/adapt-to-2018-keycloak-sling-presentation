@@ -41,7 +41,7 @@
   <feature name="sling-auth-keycloak" version="${project.version}">
     <feature>keycloak-servlet-filter-adapter</feature>
     <feature>sling</feature>
-    <bundle>mvn:org.apache.sling/org.apache.sling.auth.keycloak/1.0-SNAPSHOT</bundle>
+    <bundle>mvn:org.apache.sling/org.apache.sling.auth.keycloak/${project.version}</bundle>
   </feature>
 
 </features>

@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  sling:
+    image: quay.io/netdava/docker-karaf:latest
+    restart: always
+    volumes:
+      - type: volume
+        source: karaf-deploy
+        target: /opt/karaf/deploy
+      - type: volume
+        source: karaf-etc
+        target: /opt/karaf/etc
+      - type: volume
+        source: karaf-data
+        target: /opt/karaf/data
+      - type: volume
+        source: karaf-sling
+        target: /opt/karaf/sling
+    ports:
+    - 8181:8181
+    - 1099:1099
+    - 8101:8101
+    - 44444:4444
+    environment:
+      JAVA_OPTS: -Xms1024m -Xmx2048m
+volumes:
+  karaf-deploy:
+  karaf-etc:
+  karaf-data:
+  karaf-sling:
