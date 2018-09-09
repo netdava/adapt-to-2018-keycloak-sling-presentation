@@ -10,12 +10,13 @@
   <packaging>pom</packaging>
 
   <properties>
-    <karaf.version>4.2.1</karaf.version>
+    <karaf.version>4.2.0</karaf.version>
     <sling-features.version>0.1.1-netdava7</sling-features.version>
+    <keycloak-features.version>4.4.0.Final</keycloak-features.version>
   </properties>
 
   <modules>
-    <module>sling-keycloak-karaf-dist</module>
+    <!--<module>sling-keycloak-karaf-dist</module>-->
   </modules>
 
 </project>

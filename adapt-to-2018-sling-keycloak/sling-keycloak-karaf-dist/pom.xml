@@ -11,7 +11,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>keycloak-sling-karaf-dist</artifactId>
+  <artifactId>sling-keycloak-karaf-dist</artifactId>
   <packaging>karaf-assembly</packaging>
   <name>Apache Sling integration with Keycloak IDM over Apache Karaf</name>
 
@@ -74,11 +74,11 @@
             <feature>standard</feature>
           </bootFeatures>
           <!-- no installedFeatures -->
-          <installedFeatures>
-            <installedFeature>sling-quickstart-oak-tar</installedFeature>
-            <installedFeature>sling-discovery-oak</installedFeature>
-            <installedFeature>sling-content-starter</installedFeature>
-          </installedFeatures>
+          <!--<installedFeatures>-->
+            <!--<feature>sling-quickstart-oak-tar</feature>-->
+            <!--<feature>sling-discovery-oak</feature>-->
+            <!--<feature>sling-content-starter</feature>-->
+          <!--</installedFeatures>-->
         </configuration>
       </plugin>
     </plugins>
