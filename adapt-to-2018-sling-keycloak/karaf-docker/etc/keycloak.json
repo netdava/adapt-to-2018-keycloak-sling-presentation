@@ -3,6 +3,9 @@
   "auth-server-url": "https://auth-adapt-to.netdava.com/auth",
   "ssl-required": "external",
   "resource": "sling-localhost",
-  "public-client": true,
-  "confidential-port": 0
+  "credentials": {
+    "secret": "e9eaf9d2-ab19-4d80-b53d-30b89be55a7d"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
 }
