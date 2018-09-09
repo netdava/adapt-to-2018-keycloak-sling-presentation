@@ -42,7 +42,7 @@ Copy keycoak configuration to docker container: `docker cp ./keycloak.json karaf
 
 This project uses dependencies not available on Maven Central. 
 To build it you need to setup your maven repository to access Netdava Maven Repository https://bintray.com/netdava/maven .
-This should be setup allready via maven project specific `.mvn/local-settings.xml` .
+This should be already done via maven project specific configuration `.mvn/local-settings.xml` .
 Once all components will be available on Maven Central this step will not be necessary. 
 
 ### Build karaf docker image 

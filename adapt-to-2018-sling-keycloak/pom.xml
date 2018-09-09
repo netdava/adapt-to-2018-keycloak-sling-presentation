@@ -42,4 +42,12 @@
     </pluginManagement>
   </build>
 
+  <distributionManagement>
+    <repository>
+      <id>bintray-netdava-maven</id>
+      <name>netdava-maven</name>
+      <url>https://api.bintray.com/maven/netdava/maven/sling-keycloak/;publish=1</url>
+    </repository>
+  </distributionManagement>
+
 </project>
