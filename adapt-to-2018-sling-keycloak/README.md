@@ -25,7 +25,8 @@ docker run \
 echo "Let's install sling inside karaf container" 
 docker exec -ti karaf /opt/karaf/bin/client
 
-feature:install sling-quickstart-oak-tar sling-discovery-oak sling-starter-content
+feature:install sling-keycloak-base
+feature:install sling-keyclaok-all
 
 ```
 
