@@ -29,6 +29,14 @@ feature:install sling-quickstart-oak-tar sling-discovery-oak sling-starter-conte
 
 ```
 
+###  Setup Keycloak realm and client
+
+
+### Setup Sling keycloak auth 
+
+Copy keycoak configuration to docker container: `docker cp ./keycloak.json karaf:/opt/karaf-base/etc/keycloak.json`
+
+
 ## Building the project
 
 This project uses dependencies not available on Maven Central. 

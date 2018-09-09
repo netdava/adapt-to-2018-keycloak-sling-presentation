@@ -1,0 +1,8 @@
+{
+  "realm": "SlingDemo",
+  "auth-server-url": "https://auth-adapt-to.netdava.com/auth",
+  "ssl-required": "external",
+  "resource": "sling-localhost",
+  "public-client": true,
+  "confidential-port": 0
+}

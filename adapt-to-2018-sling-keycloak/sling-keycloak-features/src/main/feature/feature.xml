@@ -16,11 +16,32 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+<features name="${project.artifactId}-${project.version}"
+  xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
 
-    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
-        <details>${project.description}</details>
-        <!-- <config>foo=bar</config> -->
-    </feature>
+  <repository>
+    mvn:org.apache.sling/org.apache.sling.karaf-features/${sling-features.version}/xml/features
+  </repository>
+  <repository>mvn:org.keycloak/keycloak-osgi-features/${keycloak.version}/xml/features</repository>
+
+  <feature name='sling-keyclaok-all' version='${project.version}'>
+    <details>${project.description}</details>
+    <bundle>mvn:org.apache.sling/org.apache.sling.starter.content/1.0.0</bundle>
+    <feature>sling-auth-keycloak</feature>
+    <feature>sling</feature>
+  </feature>
+
+  <feature name="sling-keycloak-base">
+    <feature>composum</feature>
+    <feature>sling</feature>
+    <feature>sling-quickstart-oak-tar</feature>
+    <feature>sling-discovery-oak</feature>
+  </feature>
+
+  <feature name="sling-auth-keycloak" version="${project.version}">
+    <feature>keycloak-servlet-filter-adapter</feature>
+    <feature>sling</feature>
+    <bundle>mvn:org.apache.sling/org.apache.sling.auth.keycloak/1.0-SNAPSHOT</bundle>
+  </feature>
 
 </features>
