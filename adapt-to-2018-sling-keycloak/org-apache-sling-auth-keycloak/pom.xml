@@ -27,13 +27,13 @@
   <parent>
     <groupId>com.netdava.demo</groupId>
     <artifactId>adapt-to-2018-sling-keycloak</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0-alpha1</version>
     <relativePath>../</relativePath>
   </parent>
 
   <groupId>org.apache.sling</groupId>
   <artifactId>org.apache.sling.auth.keycloak</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1.0-alpha1</version>
   <packaging>bundle</packaging>
 
   <name>Apache Sling Auth :: Keycloak implementation</name>
