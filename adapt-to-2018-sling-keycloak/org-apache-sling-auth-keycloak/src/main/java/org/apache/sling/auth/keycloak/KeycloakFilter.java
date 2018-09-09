@@ -10,9 +10,9 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
     service = Filter.class,
     property = {
       KeycloakOIDCFilter.CONFIG_FILE_PARAM + "=" + "keycloak.json",
-      HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN + "=" + "/*",
+      HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN + "=" + "/",
       HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT
           + "="
-          + "(osgi.http.whiteboard.context.name=/*)"
+          + "(osgi.http.whiteboard.context.name=org.apache.sling)"
     })
 public class KeycloakFilter extends KeycloakOIDCFilter {}
