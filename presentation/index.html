@@ -225,14 +225,18 @@
 					</textarea>
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-											### Alternative:
-											### Use an external IAM
-											Note:
-											Delegate authentication to external service -> Identity Access Management.
-											This is what we are going to show you today.
-					</textarea>
+				<section>
+					<h3>Alternative:</h3>
+					<h4>Use an external IAM</h4>
+					
+					<span class="fragment fade-in">Deploy</span>
+					<span class="fragment fade-in">&nbsp;→&nbsp;Integrate</span>
+					<span class="fragment fade-in">&nbsp;→&nbsp;Delegate</span>
+					
+					<aside class="notes">
+					Delegate authentication to external service -> Identity Access Management.
+					This is what we are going to show you today.
+					</aside>
 				</section>
 
 			</section>
@@ -270,14 +274,14 @@
 					<span class="fragment fade-in">
 						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/sling.svg">
 				    </span>
-					<span class="fragment fade-in">
-					    &nbsp;+&nbsp;
-						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/keycloak.png">
-				    </span>
 					<span class="fragment fade-in">				    
 						&nbsp;+&nbsp;
 						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/oidc.png">
 					</span>
+					<span class="fragment fade-in">
+					    &nbsp;+&nbsp;
+						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/keycloak.png">
+				    </span>
 				</section>
 
 				<section>
@@ -368,15 +372,13 @@
 
 				<section data-markdown>
 					<textarea data-template>
-										### I want it now! What do I need to do?
+										### I want it now, and I want it now
 
-										* have Keycloak up and running (beyond the scope of the talk);
-										* configure client in Keycloak (ditto);
-										* install Keycloak servlet filter adapter into Sling;
-										* activate and configure the adapter (via bundle activator or by extending the class);
-										* install Keycloak AuthenticationHandler;
-										* (optional) install Oak JAAS module;
-										* (optional) setup user provisioning.
+										* Keycloak (4.4.0+)
+										* Keycloak servlet filter adapter
+										* Sling Keycloak AuthenticationHandler
+										* (optional) Oak pre-authenticating JAAS module
+										* (optional) Oak user provisioning
 										</textarea>
 				</section>
 
