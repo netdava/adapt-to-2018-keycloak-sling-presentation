@@ -1,0 +1,81 @@
+version: '3.5'
+
+services:
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+  keycloak:
+      image: jboss/keycloak:4.4.0.Final
+      labels:
+        - "traefik.frontend.rule=Host:auth.docker.localhost"
+        - "traefik.port=8080"
+      # network_mode: "bridge"
+      restart: always
+      environment:
+        DB_VENDOR: POSTGRES
+        # DB_ADDR: 172.17.0.1
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+        PROXY_ADDRESS_FORWARDING: "true"
+      ports:
+        - 8081:8080
+        - 9990:9990
+      depends_on:
+        - postgres
+  sling:
+    image: quay.io/netdava/docker-karaf:latest
+    labels:
+      - "traefik.frontend.rule=Host:sling.docker.localhost"
+      - "traefik.port=8181"
+    restart: always
+    volumes:
+      - type: volume
+        source: karaf-deploy
+        target: /opt/karaf-base/deploy
+      - type: volume
+        source: karaf-etc
+        target: /opt/karaf-base/etc
+      - type: volume
+        source: karaf-data
+        target: /opt/karaf-base/data
+      - type: volume
+        source: karaf-sling
+        target: /opt/karaf-base/sling
+    ports:
+    # - 8181:8181
+    - 1099:1099
+    - 8101:8101
+    - 44444:4444
+    environment:
+      JAVA_OPTS: -Xms1024m -Xmx2048m
+    depends_on:
+      - keycloak
+  # The reverse proxy service (Træfik)
+  reverse-proxy:
+    image: traefik  # The official Traefik docker image
+    command: --api --docker  # Enables the web UI and tells Træfik to listen to docker
+    ports:
+      - "80:80"      # The HTTP port
+      - "8080:8080"  # The Web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # So that Traefik can listen to the Docker events
+  # A container that exposes a simple API
+  whoami:
+    image: emilevauge/whoami  # A container that exposes an API to show it's IP address
+    labels:
+      - "traefik.frontend.rule=Host:whoami.docker.localhost"
+volumes:
+  karaf-deploy:
+  karaf-etc:
+  karaf-data:
+  karaf-sling:
+  postgres_data:
+   driver: local

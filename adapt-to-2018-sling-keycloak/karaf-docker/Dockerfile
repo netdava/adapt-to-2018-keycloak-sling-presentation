@@ -7,7 +7,6 @@ ENV KARAF_VERSION 4.2.1
 ENV JAVA_MIN_MEM 1024m
 ENV JAVA_MAX_MEM 20148m
 ENV KARAF_EXEC exec
-ENV KARAF_BASE /opt/karaf-base
 
 COPY download.sh /tmp/download.sh
 
@@ -18,19 +17,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends jq curl && rm -
     && mkdir -p /opt/karaf \
     && tar --strip-components=1 -C /opt/karaf -xzf /tmp/apache-karaf.tar.gz \
     && rm /tmp/apache-karaf.tar.gz \
-    && mkdir -p $KARAF_BASE $KARFA_BASE/log \
-    && cp -R /opt/karaf/etc $KARAF_BASE \
-    && chown -R $KARAF_USER.$KARAF_USER /opt/karaf \
-    && chown -R $KARAF_USER.$KARAF_USER $KARAF_BASE \
-    && chmod 700 $KARAF_BASE \
-    && ls -la $KARAF_BASE ; ls -la $KARAF_BASE/etc
+    && chown -R $KARAF_USER.$KARAF_USER /opt/karaf
 
 EXPOSE 1099 8101 44444
 
 COPY docker-entrypoint.sh /usr/local/bin/
-COPY etc /opt/karaf/etc
 
 USER $KARAF_USER
+COPY etc /opt/karaf/etc
+
 VOLUME ["/opt/karaf/deploy","/opt/karaf/etc","/opt/karaf/data", "/opt/karaf/sling" ]
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["/opt/karaf/bin/karaf", "run"]
+# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/karaf/bin/karaf", "run"]
