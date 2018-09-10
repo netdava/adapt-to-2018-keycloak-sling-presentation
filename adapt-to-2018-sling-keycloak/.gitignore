@@ -3,3 +3,6 @@
 target/
 .directory
 tmp-sling-keycloak
+
+apache-karaf-4.2.1.tar.gz
+apache-karaf-4.2.1

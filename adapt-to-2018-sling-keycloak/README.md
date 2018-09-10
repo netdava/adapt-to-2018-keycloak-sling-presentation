@@ -25,15 +25,24 @@ docker run \
 echo "Let's install sling inside karaf container" 
 docker exec -ti karaf /opt/karaf/bin/client
 
-feature:install sling-quickstart-oak-tar sling-discovery-oak sling-starter-content
+feature:install sling-keycloak-base
+feature:install sling-keyclaok-all
 
 ```
+
+###  Setup Keycloak realm and client
+
+
+### Setup Sling keycloak auth 
+
+Copy keycoak configuration to docker container: `docker cp ./keycloak.json karaf:/opt/karaf-base/etc/keycloak.json`
+
 
 ## Building the project
 
 This project uses dependencies not available on Maven Central. 
 To build it you need to setup your maven repository to access Netdava Maven Repository https://bintray.com/netdava/maven .
-This should be setup allready via maven project specific `.mvn/local-settings.xml` .
+This should be already done via maven project specific configuration `.mvn/local-settings.xml` .
 Once all components will be available on Maven Central this step will not be necessary. 
 
 ### Build karaf docker image 
