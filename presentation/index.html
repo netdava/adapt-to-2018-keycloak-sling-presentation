@@ -246,8 +246,16 @@
 			
 				<section data-markdown>
 					<textarea data-template>
-											#### Authentication with IAM: How it works?
-											![IAM sequence diagram](iam.svg)
+											#### Authentication without IAM
+											![IAM sequence diagram](img/without-iam.svg)
+											<!-- .element: style="width: 55%; border: 0; background: none; box-shadow: none"-->											
+					</textarea>
+				</section>
+				
+				<section data-markdown>
+					<textarea data-template>
+											#### Authentication with IAM: how ith works?
+											![IAM sequence diagram](img/with-iam.svg)
 											<!-- .element: style="width: 75%; border: 0; background: none; box-shadow: none"-->											
 					</textarea>
 				</section>
@@ -259,9 +267,13 @@
 
 				<section>
 					<h3>What was that?</h3>
-					<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/keycloak.png">
-					&nbsp;+&nbsp;
-					<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/oidc.png">
+					<span class="fragment fade-in">
+						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/keycloak.png">
+				    </span>
+					<span class="fragment fade-in">				    
+						&nbsp;+&nbsp;
+						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/oidc.png">
+					</span>
 				</section>
 
 				<section>
