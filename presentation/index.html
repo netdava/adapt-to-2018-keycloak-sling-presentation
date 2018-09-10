@@ -12,7 +12,7 @@
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
-	
+
 	<style type="text/css">
 		#guy {
 		  left:-8.33%;
@@ -31,7 +31,7 @@
 		  width:70%;
 		}
 	</style>
-	
+
 	<!-- Printing and PDF exports -->
 	<script>
 		var link = document.createElement("link");
@@ -46,6 +46,7 @@
 
 <body>
 	<div class="reveal">
+		<img src="adapt-to-black.svg" alt="adapt-to logo" style="width:7%; height: auto; position:absolute; left:20px; top:20px;">
 		<div class="slides">
 
 			<section data-markdown>
@@ -199,11 +200,11 @@
 			</section>
 
 			<section>
-			
+
 				<section>
 					<h3 style="background: #42affa; width: 100%">Technical challenges</h3>
 				</section>
-				
+
 				<section data-markdown data-transition="fade">
 					<textarea data-template>
 											### Technical challenges
@@ -211,7 +212,7 @@
 											<!-- .element: style="width: 100%; border: 0; background: none; box-shadow: none"-->
 					</textarea>
 				</section>
-				
+
 				<section data-markdown data-transition="fade">
 					<textarea data-template>
 											### Sling
@@ -228,11 +229,11 @@
 				<section>
 					<h3>Alternative:</h3>
 					<h4>Use an external IAM</h4>
-					
+
 					<span class="fragment fade-in">Deploy</span>
 					<span class="fragment fade-in">&nbsp;→&nbsp;Integrate</span>
 					<span class="fragment fade-in">&nbsp;→&nbsp;Delegate</span>
-					
+
 					<aside class="notes">
 					Delegate authentication to external service -> Identity Access Management.
 					This is what we are going to show you today.
@@ -247,23 +248,23 @@
 				<section>
 					<h3 style="background: #42affa; width: 100%">Authentication</h3>
 				</section>
-			
+
 				<section data-markdown>
 					<textarea data-template>
 											#### Authentication without IAM
 											![IAM sequence diagram](img/without-iam.svg)
-											<!-- .element: style="width: 55%; border: 0; background: none; box-shadow: none"-->											
+											<!-- .element: style="width: 55%; border: 0; background: none; box-shadow: none"-->
 					</textarea>
 				</section>
-				
+
 				<section data-markdown>
 					<textarea data-template>
 											#### Authentication with IAM: how ith works?
 											![IAM sequence diagram](img/with-iam.svg)
-											<!-- .element: style="width: 75%; border: 0; background: none; box-shadow: none"-->											
+											<!-- .element: style="width: 75%; border: 0; background: none; box-shadow: none"-->
 					</textarea>
 				</section>
-				
+
 				<section>
 					<h3 style="background: #42affa; width: 100%">Live Demo</h3>
 					https://adapt-to-demo.netdava.com/
@@ -274,7 +275,7 @@
 					<span class="fragment fade-in">
 						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/sling.svg">
 				    </span>
-					<span class="fragment fade-in">				    
+					<span class="fragment fade-in">
 						&nbsp;+&nbsp;
 						<img style="height: 2em; vertical-align: middle; border: 0; background: none; box-shadow: none" src="img/oidc.png">
 					</span>
@@ -307,7 +308,7 @@
 						&nbsp;
 						<img class="fragment fade-in" style="vertical-align: bottom; margin: 0; height: 1.5em; border: 0; background: none; box-shadow: none" src="img/redhat.svg">
 				</section>
-				
+
 				<section>
 				    <h3>SSO Protocols</h3>
 						<img style="height: 3em" src="img/oidc.jpg">
@@ -388,9 +389,9 @@
 
 										(Tell about GitHub repos and Docker images; propose improvised hands-on if there is interest)
 
-										* https://github.com/keycloak/keycloak/
+										* Demo code: https://github.com/netdava/adapt-to-2018-keycloak-sling-presentation
 										* https://github.com/netdava/sling-org-apache-sling-karaf-features
-										*
+										* https://github.com/keycloak/keycloak/
 
 										</textarea>
 				</section>
