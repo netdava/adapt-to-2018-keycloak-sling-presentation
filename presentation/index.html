@@ -383,6 +383,42 @@
 										</textarea>
 				</section>
 
+				<section>
+					 <h3>Keycloak servlet filter</h3>
+						<pre><code data-trim data-noescape>
+						@Component(
+						    immediate = true,
+						    service = Filter.class,
+						    property = {
+						      CONFIG_FILE_PARAM + "=" + "keycloak.json",
+						      SKIP_PATTERN_PARAM + "=" + "/public/.*",
+						      HTTP_WHITEBOARD_FILTER_PATTERN + "=" + "/",
+						      HTTP_WHITEBOARD_CONTEXT_SELECT + "="
+						    + "(osgi.http.whiteboard.context.name=org.apache.sling)"
+						    })
+						public class KeycloakFilter extends KeycloakOIDCFilter { }
+					</code></pre>
+				</section>
+
+				<section>
+					 <h3>Keycloak Sling AuthenticationHandler</h3>
+						<pre><code data-trim data-noescape>
+							public class KeycloakAuthenticationHandler implements
+							 org.apache.sling.auth.core.spi.AuthenticationHandler {
+								// ....
+							public AuthenticationInfo extractCredentials(
+						      HttpServletRequest req, HttpServletResponse res) {
+						    KeycloakSecurityContext ctx = (KeycloakSecurityContext)
+                  req.getSession()
+						 .getAttribute("org.keycloak.KeycloakSecurityContext");
+						    return new AuthenticationInfo("KEYCLOAK",
+								     "admin", "admin".toCharArray());
+						  }
+							// ....
+						 }
+					</code></pre>
+				</section>
+
 				<section data-markdown>
 					<textarea data-template>
 										### Can I hack on it?
@@ -460,7 +496,7 @@
 					    </td>
 					  </tr>
 					</table>
-					
+
 					<aside class="notes">
 					**YES** if
 					* You’re relying on the users’ existence in the underlying JCR.
@@ -482,7 +518,7 @@
 					<h3>User provisioning: push</h3>
 					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/push.svg">
 					<aside class="notes">
-						Can be implemented as a Keycloak extension listening for events and propagating changes to Sling/Oak via REST API.					
+						Can be implemented as a Keycloak extension listening for events and propagating changes to Sling/Oak via REST API.
 					</aside>
 				</section>
 
@@ -491,7 +527,7 @@
 					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/pull.svg">
 					<aside class="notes">
 						Can be done with a periodic task in Sling polling Keycloak for changes and synchronizing via Keycloak REST API.
-					</aside>				
+					</aside>
 				</section>
 
 				<section data-transition="none-out">
@@ -508,7 +544,7 @@
 					<textarea data-template>
 						### SCIM to the rescue (future)
 						![scim](img/scim.png)
-						
+
 						http://www.simplecloud.info
 					</textarea>
 				</section>
@@ -535,9 +571,9 @@
 				</section>
 
 			</section>
-			
+
 			<!-- Authorization -->
-				
+
 			<section>
 				<section data-markdown>
 					<textarea data-template>

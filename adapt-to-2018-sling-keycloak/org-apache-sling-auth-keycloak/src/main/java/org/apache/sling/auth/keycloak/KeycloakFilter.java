@@ -24,7 +24,8 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
     immediate = true,
     service = Filter.class,
     property = {
-      KeycloakOIDCFilter.CONFIG_FILE_PARAM + "=" + "keycloak.json",
+      "keycloak.config.file=" + "keycloak.json",
+      "keycloak.config.skipPattern=" + "/public/.*",
       HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN + "=" + "/",
       HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT
           + "="
