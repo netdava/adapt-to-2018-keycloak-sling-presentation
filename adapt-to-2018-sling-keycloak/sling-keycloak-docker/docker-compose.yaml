@@ -26,7 +26,7 @@ services:
         KEYCLOAK_PASSWORD: Pa55w0rd
         PROXY_ADDRESS_FORWARDING: "true"
       ports:
-        - 8081:8080
+        - 8080:8080
         - 9990:9990
       depends_on:
         - postgres
@@ -50,7 +50,7 @@ services:
         source: karaf-sling
         target: /opt/karaf-base/sling
     ports:
-    # - 8181:8181
+    - 8181:8181
     - 1099:1099
     - 8101:8101
     - 44444:4444
@@ -59,19 +59,19 @@ services:
     depends_on:
       - keycloak
   # The reverse proxy service (Træfik)
-  reverse-proxy:
-    image: traefik  # The official Traefik docker image
-    command: --api --docker  # Enables the web UI and tells Træfik to listen to docker
-    ports:
-      - "80:80"      # The HTTP port
-      - "8080:8080"  # The Web UI (enabled by --api)
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # So that Traefik can listen to the Docker events
-  # A container that exposes a simple API
-  whoami:
-    image: emilevauge/whoami  # A container that exposes an API to show it's IP address
-    labels:
-      - "traefik.frontend.rule=Host:whoami.docker.localhost"
+  # reverse-proxy:
+  #   image: traefik  # The official Traefik docker image
+  #   command: --api --docker  # Enables the web UI and tells Træfik to listen to docker
+  #   ports:
+  #     - "80:80"      # The HTTP port
+  #     - "8081:8080"  # The Web UI (enabled by --api)
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock  # So that Traefik can listen to the Docker events
+  # # A container that exposes a simple API
+  # whoami:
+  #   image: emilevauge/whoami  # A container that exposes an API to show it's IP address
+  #   labels:
+  #     - "traefik.frontend.rule=Host:whoami.docker.localhost"
 volumes:
   karaf-deploy:
   karaf-etc:
