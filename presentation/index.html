@@ -69,6 +69,32 @@
 					<textarea data-template>
 											### Why should you listen
 
+											Software industry is growing up.
+
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### Why should you listen (continued)
+
+											You don’t have to build everything yourself.
+											Use pre-existing applications to build your thing.
+
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### In Sling terms
+
+											* use Sling to handle what is handle best - the content
+											* use whatever service or application
+											* integrate the services - **The focus of today’s talk**
+										</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+											### Why should you listen (continued)
+
 											![In god we trust, all others we authenticate.](in-god-we-authenticate.jpg) <!-- .element: style="width: 50%"-->
 
 											Some people don't trust gods either :).
@@ -656,7 +682,7 @@
 			<section>
 				<section data-markdown>
 					<textarea data-template>
-							### Access control in Keycloak
+							### Access control with Keycloak
 
 							* Paradigm: declarative + imperative
 							* Character: identity-centric
@@ -679,6 +705,35 @@
 
 							* unfamiliar for most Sling developers
 							* policies “live” inside Keycloak -> another system to manage
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Policies in Keycloak
+
+							Allow content readers access to **/secured-content**
+							(Role based policy)
+
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Policies in Keycloak
+
+							Allow access to **/content/for/adapt-to** for users with **@adapt.to** email
+
+							(Attribute based access)
+
+						</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Policies in Keycloak
+
+							If today is Monday and the wheather in Potsdam is sunny and over 30 degrees then system is closed so employees can have fun.
+
+							(Go wild: Time based + custom access policy)
+
 						</textarea>
 				</section>
 			</section>
@@ -731,9 +786,10 @@
 							### About us - Eugen Stan
 
 							* passionate about business and technology
+							* freelance IT architect / consultant
 							* I like to build systems - especially SaaS
 							* Open source contributor: Apache Software Foundation, Debian, etc
-							* https://netdava.com/ieugen
+							* Interests: Kubernetes, containers, Java
 						</textarea>
 				</section>
 			</section>
