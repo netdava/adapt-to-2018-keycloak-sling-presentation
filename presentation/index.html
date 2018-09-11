@@ -402,10 +402,9 @@
 			<section>
 				<section data-markdown>
 					<textarea data-template>
-										### Identity provisioning
-										<!-- .element: style="background: #42affa; width: 100%" -->
-
-										</textarea>
+						### Identity provisioning
+						<!-- .element: style="background: #42affa; width: 100%" -->
+					</textarea>
 				</section>
 
 				<section data-transition="none-out">
@@ -438,83 +437,114 @@
 					</aside>
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-										### Do I really need it?
+				<section>
+					<h3>Do I really need it?</h3>
+					<table>
+					  <tr>
+					    <td><b>YES</b>:</td>
+					    <td><b>NO</b>:</td>
+					  </tr>
+					  <tr style="font-size: 0.7em">
+					    <td>
+					      <ul>
+					        <li>You’re relying on the users’ existence in the underlying JCR;</li>
+					        <li>If you make heavy use of JCR ACLs.</li>
+					      </ul>
+					    </td>
+					    <td>
+					      <ul>
+					        <li>You connect the underlying DB using a service account;</li>
+					        <li>Access control is on the application level</li>
+					        <li>You’re OK to go with a single account for JCR</li>
+					      </ul>
+					    </td>
+					  </tr>
+					</table>
+					
+					<aside class="notes">
+					**YES** if
+					* You’re relying on the users’ existence in the underlying JCR.
+					* If you make heavy use of JCR ACLs.
 
-										**YES** if
-										* You’re relying on the users’ existence in the underlying JCR.
-										* If you make heavy use of JCR ACLs.
+					**NO** if you follow a JavaEE-like paradigm:
+					* You connect the underlying DB using a service account
+					* Access control is on the application level
+					* You’re OK to go with a single account for JCR
+					</aside>
+				</section>
 
-										**NO** if you follow a JavaEE-like paradigm:
-										* You connect the underlying DB using a service account
-										* Access control is on the application level
-										* You’re OK to go with a single account for JCR
-										</textarea>
+				<section data-transition="none-out">
+					<h3>User provisioning: approaches</h3>
+					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/provisioning.svg">
+				</section>
+
+				<section data-transition="none-out">
+					<h3>User provisioning: push</h3>
+					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/push.svg">
+					<aside class="notes">
+						Can be implemented as a Keycloak extension listening for events and propagating changes to Sling/Oak via REST API.					
+					</aside>
+				</section>
+
+				<section data-transition="none-out">
+					<h3>User provisioning: pull</h3>
+					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/pull.svg">
+					<aside class="notes">
+						Can be done with a periodic task in Sling polling Keycloak for changes and synchronizing via Keycloak REST API.
+					</aside>				
+				</section>
+
+				<section data-transition="none-out">
+					<h3>User provisioning: shared store</h3>
+					<img style="height: 75%; border: 0; background: none; box-shadow: none" src="img/shared.svg">
+				</section>
+
+				<section>
+					<h3>Can I have push/pull now?</h3>
+					<img class="fragment fade-in" style="border: 0; background: none; box-shadow: none" src="img/no.jpg">
 				</section>
 
 				<section data-markdown>
 					<textarea data-template>
-										### How is it done?
-
-										* push provisioning (Keycloak pushes to Sling);
-										* pull provisioning (aka periodic sync; Sling pulls from Keycloak);
-										* shared user store (both use the same user database).
-
-										</textarea>
+						### SCIM to the rescue (future)
+						![scim](img/scim.png)
+						
+						http://www.simplecloud.info
+					</textarea>
 				</section>
 
 				<section data-markdown>
 					<textarea data-template>
-										### Push provisioning
+						### SCIM to the rescue (future)
 
-										Can be implemented as a Keycloak extension listening for events and propagating changes to Sling/Oak via REST API.
-
-										</textarea>
+						* Open standard for identity data exchange
+						* Push and pull provisioning in a vendor-neutral way
+						* JSON-based, lightweight and extensible
+						* Opensource Java SDK by PingIdentity
+						* Coming soon to Keycloak
+					</textarea>
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-										### Pull provisioning
-
-										Can be done with a periodic task in Sling polling Keycloak for changes and synchronizing via Keycloak REST API.
-										</textarea>
-				</section>
-
-				<section data-markdown>
-					<textarea data-template>
-										### Why don’t we have it now?
-
-										We did not need it for our use-cases.
-										</textarea>
-				</section>
-
-				<section data-markdown>
-					<textarea data-template>
-										### SCIM to the rescue (future)
-
-										* SCIM is an open standard for identity data exchange.
-										* Both push and pull provisioning in a vendor-neutral way.
-										* Neither Sling nor Keycloak support SCIM out of the box :(
-										* Maybe for adaptTo’2019?
-
-										</textarea>
-				</section>
-
-				<section data-markdown>
-					<textarea data-template>
-										### LDAP to the rescue (present)
-
-										* The easiest way to provide a unified user store is LDAP directory.
-										* It is supported OOTB by both Sling/Oak and Keycloak.
-
-										</textarea>
+				<section>
+					<h3>LDAP to the rescue (present)</h3>
+					<img style="border: 0; background: none; box-shadow: none" src="img/ldap.svg">
+					<aside class="notes">
+						* The easiest way to provide a unified user store is LDAP directory.
+						* It is supported OOTB by both Sling/Oak and Keycloak.
+					</aside>
 				</section>
 
 			</section>
-
+			
 			<!-- Authorization -->
+				
 			<section>
+				<section data-markdown>
+					<textarea data-template>
+						### Authorization
+						<!-- .element: style="background: #42affa; width: 100%" -->
+					</textarea>
+				</section>
 				<section data-markdown>
 					<textarea data-template>
 											### Options for authorization
@@ -619,14 +649,9 @@
 
 			<section data-markdown>
 				<textarea data-template>
-						### Live demo
-
-						* Sling Fling app w/ Keycloak
-						* Nginx website
-						* SSO between apps
-						* Social login with Facebook
-						* RBAC, time based login and other policies
-					</textarea>
+					### Live Demo
+					<!-- .element: style="background: #42affa; width: 100%" -->
+				</textarea>
 			</section>
 
 			<!-- OUTRO -->
@@ -636,8 +661,8 @@
 					<textarea data-template>
 							### Future directions
 
-							* use OSGi Config Admin Service for adapter configuration
-							* Sling based login pages
+							* Use OSGi Config Admin Service for multi-tenancy
+							* Integrate Keycloak authorization and Oak queries
 							* SCIM support in both Sling and Keycloak
 
 						</textarea>
@@ -680,6 +705,7 @@
 			<section data-markdown>
 				<textarea data-template>
 						# Q & A
+						<!-- .element: style="background: #42affa; width: 100%" -->
 
 						* Demo: https://adapt-to-demo.netdava.com/
 
@@ -689,7 +715,7 @@
 			<section data-markdown>
 				<textarea data-template>
 						# Thank you !
-
+						<!-- .element: style="background: #42affa; width: 100%" -->
 					</textarea>
 			</section>
 
